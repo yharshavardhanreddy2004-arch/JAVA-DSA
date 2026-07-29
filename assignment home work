@@ -1,0 +1,90 @@
+// A library charges a fine for every book returned late. For first 5 days the fine is 50 paise, for 6-10 days fine is one rupee and above 10 days fine is 5 rupees. If you return the book after 30 days your membership will be cancelled. Write a program to accept the number of days the member is late to return the book and display the fine or the appropriate message give me a java code
+import java.util.Scanner;
+
+public class LibraryFine {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of late days: ");
+        int days = sc.nextInt();
+
+        if (days > 30) {
+            System.out.println("Membership cancelled");
+        } else if (days >= 1 && days <= 5) {
+            System.out.println("Fine = 50 paise");
+        } else if (days >= 6 && days <= 10) {
+            System.out.println("Fine = 1 rupee");
+        } else if (days > 10) {
+            System.out.println("Fine = 5 rupees");
+        } else {
+            System.out.println("No fine");
+        }
+
+        sc.close();
+    }
+}
+output
+Enter number of late days: 3
+Fine = 50 paise
+//In a company, worker efficiency is determined on the basis of the time required for a worker to complete a particular job. If the time taken by the worker is between 2 – 3 hours, then the worker is said to be highly efficient. If the time required by the worker is between 3 – 4 hours, then the worker is ordered to improve speed. If the time taken is between 4 – 5 hours, the worker is given training to improve his speed, and if the time taken by the worker is more than 5 hours, then the worker has to leave the company. If the time taken by the worker is input through the keyboard, find the efficiency of the worker
+import java.util.Scanner;
+
+public class WorkerEfficiency {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter time taken by worker (in hours): ");
+        double time = sc.nextDouble();
+
+        if (time >= 2 && time < 3) {
+            System.out.println("Worker is highly efficient");
+        } else if (time >= 3 && time < 4) {
+            System.out.println("Worker should improve speed");
+        } else if (time >= 4 && time <= 5) {
+            System.out.println("Worker should be given training");
+        } else if (time > 5) {
+            System.out.println("Worker has to leave the company");
+        } else {
+            System.out.println("Invalid input");
+        }
+
+        sc.close();
+    }
+}
+output
+Enter time taken by worker (in hours): 12
+Worker has to leave the company
+//Given the length and breadth of a rectangle, write a program to find whether the area of the rectangle is greater than its perimeter. For example, the area of the rectangle with length = 5 and breadth = 4 is greater than its perimeter
+import java.util.Scanner;
+
+public class RectangleCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter length: ");
+        int length = sc.nextInt();
+
+        System.out.print("Enter breadth: ");
+        int breadth = sc.nextInt();
+
+        int area = length * breadth;
+        int perimeter = 2 * (length + breadth);
+
+        System.out.println("Area = " + area);
+        System.out.println("Perimeter = " + perimeter);
+
+        if (area > perimeter) {
+            System.out.println("Area is greater than perimeter");
+        } else {
+            System.out.println("Area is not greater than perimeter");
+        }
+
+        sc.close();
+    }
+}
+output
+Enter length: 12
+Enter breadth: 6
+Area = 72
+Perimeter = 36
+Area is greater than perimeter
