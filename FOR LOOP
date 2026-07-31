@@ -412,3 +412,227 @@ public class Main {
 }
 output:
 Intersection = [20, 40]
+
+21.Find the union of two arrays.
+import java.util.HashSet;
+
+public class UnionOfArrays {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4};
+        int[] arr2 = {3, 4, 5, 6};
+
+        HashSet<Integer> union = new HashSet<>();
+
+        for (int num : arr1) {
+            union.add(num);
+        }
+
+        for (int num : arr2) {
+            union.add(num);
+        }
+
+        System.out.println("Union of arrays: " + union);
+    }
+}
+output:
+Union of arrays: [1, 2, 3, 4, 5, 6]
+
+22.Find all pairs whose sum equals a target value.
+public class PairSum {
+    public static void main(String[] args) {
+        int[] arr = {2, 4, 3, 5, 7, 8, 9};
+        int target = 7;
+
+        System.out.println("Pairs are:");
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] + arr[j] == target) {
+                    System.out.println(arr[i] + " " + arr[j]);
+                }
+            }
+        }
+    }
+}
+output:
+Pairs are:
+2 5
+4 3
+
+23.Find the maximum subarray sum (Kadane's Algorithm).
+public class KadaneAlgorithm {
+    public static void main(String[] args) {
+        int[] arr = {-2, -3, 4, -1, -2, 1, 5, -3};
+
+        int maxSum = arr[0];
+        int currentSum = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            currentSum = Math.max(arr[i], currentSum + arr[i]);
+            maxSum = Math.max(maxSum, currentSum);
+        }
+
+        System.out.println("Maximum Subarray Sum = " + maxSum);
+    }
+}
+output:
+Maximum Subarray Sum = 7
+
+24.Find leaders in an array.
+public class LeadersInArray {
+    public static void main(String[] args) {
+        int[] arr = {16, 17, 4, 3, 5, 2};
+
+        int max = arr[arr.length - 1];
+        System.out.print(max + " ");
+
+        for (int i = arr.length - 2; i >= 0; i--) {
+            if (arr[i] >= max) {
+                max = arr[i];
+                System.out.print(max + " ");
+            }
+        }
+    }
+}
+output:
+2 5 17
+
+25.Find the equilibrium index.
+public class EquilibriumIndex {
+    public static void main(String[] args) {
+        int[] arr = {-7, 1, 5, 2, -4, 3, 0};
+
+        int totalSum = 0;
+        for (int num : arr) {
+            totalSum += num;
+        }
+
+        int leftSum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            totalSum -= arr[i];
+
+            if (leftSum == totalSum) {
+                System.out.println("Equilibrium Index = " + i);
+                return;
+            }
+
+            leftSum += arr[i];
+        }
+
+        System.out.println("No Equilibrium Index");
+    }
+}
+output:
+Equilibrium Index = 3
+
+26.Print all elements of a matrix.
+public class PrintMatrix {
+    public static void main(String[] args) {
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+output:
+1 2 3
+4 5 6
+7 8 9
+
+27.Find the sum of all elements.
+public class SumOfElements {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+
+        int sum = 0;
+
+        for (int num : arr) {
+            sum += num;
+        }
+
+        System.out.println("Sum of elements = " + sum);
+    }
+}
+output:
+Sum of elements = 15
+
+28.Print row-wise sums.
+public class RowWiseSum {
+    public static void main(String[] args) {
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        for (int i = 0; i < matrix.length; i++) {
+            int sum = 0;
+
+            for (int j = 0; j < matrix[i].length; j++) {
+                sum += matrix[i][j];
+            }
+
+            System.out.println("Row " + (i + 1) + " sum = " + sum);
+        }
+    }
+}
+output:
+Row 1 sum = 6
+Row 2 sum = 15
+Row 3 sum = 24
+
+29.Print column-wise sums.
+public class ColumnWiseSum {
+    public static void main(String[] args) {
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        for (int j = 0; j < matrix[0].length; j++) {
+            int sum = 0;
+
+            for (int i = 0; i < matrix.length; i++) {
+                sum += matrix[i][j];
+            }
+
+            System.out.println("Column " + (j + 1) + " sum = " + sum);
+        }
+    }
+}
+output:
+Column 1 sum = 12
+Column 2 sum = 15
+Column 3 sum = 18
+
+30.Count even and odd numbers.
+public class CountEvenOdd {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
+
+        int even = 0;
+        int odd = 0;
+
+        for (int num : arr) {
+            even += (num % 2 == 0) ? 1 : 0;
+            odd += (num % 2 != 0) ? 1 : 0;
+        }
+
+        System.out.println("Even numbers count = " + even);
+        System.out.println("Odd numbers count = " + odd);
+    }
+}
+output:
+Even numbers count = 4
+Odd numbers count = 4
+
