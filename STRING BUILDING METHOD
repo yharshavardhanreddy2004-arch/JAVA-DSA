@@ -1,0 +1,645 @@
+1.//char At
+import java.util.Scanner;
+
+public class CharAtInput {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.print("Enter the index: ");
+        int index = sc.nextInt();
+
+        System.out.println("Character: " + str.charAt(index));
+
+        sc.close();
+    }
+}
+output:
+Enter a string: Black pearl
+Enter the index: 2
+Character: a
+
+2.//code Point At
+import java.util.Scanner;
+
+public class CodePointAtInput {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.print("Enter the index: ");
+        int index = sc.nextInt();
+
+        int code = str.codePointAt(index);
+
+        System.out.println("Unicode code point: " + code);
+
+        sc.close();
+    }
+}
+output:
+Enter a string: king
+Enter the index: 1
+Unicode code point: 105
+
+3.//code Point Before
+public class CodePointBeforeExample2 {
+    public static void main(String[] args) {
+        String str = "Java";
+
+        int code = str.codePointBefore(3);
+
+        System.out.println("Unicode code point: " + code);
+        System.out.println("Character: " + (char) code);
+    }
+}
+outut:
+Unicode code point: 118
+Character: v
+
+4.//code Point Count
+public class CodePointCountExample2 {
+    public static void main(String[] args) {
+        String str = "Java Programming";
+
+        int count = str.codePointCount(0, 4);
+
+        System.out.println("Code Point Count: " + count);
+    }
+}
+output:
+Code Point Count: 3
+
+5.//compare To
+Equal Strings:
+public class CompareToExample1 {
+    public static void main(String[] args) {
+        String str1 = "Java";
+        String str2 = "Java";
+
+        System.out.println(str1.compareTo(str2));
+    }
+}
+output:
+o
+Different Strings:
+public class CompareToExample2 {
+    public static void main(String[] args) {
+        String str1 = "Apple";
+        String str2 = "Banana";
+
+        System.out.println(str1.compareTo(str2));
+    }
+}
+output:
+-1
+Positive Result:
+public class CompareToExample3 {
+    public static void main(String[] args) {
+        String str1 = "Cat";
+        String str2 = "Bat";
+
+        System.out.println(str1.compareTo(str2));
+    }
+}
+output:
+1
+
+6.//compare To Igonare case
+public class CompareToIgnoreCaseExample {
+    public static void main(String[] args) {
+
+        String str1 = "Java";
+        String str2 = "JAVA";
+        String str3 = "Apple";
+        String str4 = "banana";
+        String str5 = "Zoo";
+        String str6 = "apple";
+
+        // Equal strings (ignoring case)
+        System.out.println(str1.compareToIgnoreCase(str2));
+
+        // Negative result
+        System.out.println(str3.compareToIgnoreCase(str4));
+
+        // Positive result
+        System.out.println(str5.compareToIgnoreCase(str6));
+    }
+}
+output:
+0
+-1
+25
+
+7.//Concat
+public class ConcatExample2 {
+    public static void main(String[] args) {
+
+        String firstName = "Rahul";
+        String lastName = "Sharma";
+
+        String fullName = firstName.concat(" ").concat(lastName);
+
+        System.out.println("Full Name: " + fullName);
+    }
+}
+output:
+Full Name: Jack Sparrow
+
+8.//contant Equals
+public class ContentEqualsExample2 {
+    public static void main(String[] args) {
+
+        String str = "Hello Java";
+
+        StringBuilder sb1 = new StringBuilder("Hello Java");
+        StringBuilder sb2 = new StringBuilder("Hello World");
+
+        System.out.println("Comparison 1: " + str.contentEquals(sb1));
+        System.out.println("Comparison 2: " + str.contentEquals(sb2));
+    }
+}
+output:
+Comparison 1: true
+Comparison 2: false
+
+9.//copy Value Of
+public class CopyValueOfExample {
+    public static void main(String[] args) {
+
+        char[] chars = {'H', 'a', 'r', 's', 'h','a'};
+
+        // Convert complete char array to String
+        String str1 = String.copyValueOf(chars);
+
+        // Convert part of char array to String
+        String str2 = String.copyValueOf(chars, 1, 4);
+
+        System.out.println("Complete String: " + str1);
+        System.out.println("Partial String: " + str2);
+    }
+}
+output:
+Complete String: Harsha
+Partial String: arsh
+
+10.//ends with
+public class EndsWithExample {
+    public static void main(String[] args) {
+
+        String str = "Hello Java";
+
+        System.out.println(str.endsWith("Java"));
+        System.out.println(str.endsWith("Hello"));
+        System.out.println(str.endsWith("a"));
+    }
+}
+output:
+true
+false
+true
+
+11.//equals
+public class EqualsExample {
+    public static void main(String[] args) {
+
+        String str1 = "Java";
+        String str2 = "Java";
+        String str3 = "java";
+
+        System.out.println(str1.equals(str2));
+        System.out.println(str1.equals(str3));
+    }
+}
+output:
+true
+false
+
+12.//contains
+public class ContainsExample {
+    public static void main(String[] args) {
+
+        String str = "Hello Java Programming";
+
+        System.out.println(str.contains("Java"));
+        System.out.println(str.contains("Python"));
+        System.out.println(str.contains("Hello"));
+    }
+}
+output:
+true
+false
+true
+
+13.//equal Ignore Case
+public class EqualsIgnoreCaseExample {
+    public static void main(String[] args) {
+
+        String str1 = "Java";
+        String str2 = "JAVA";
+        String str3 = "Python";
+
+        System.out.println(str1.equalsIgnoreCase(str2));
+        System.out.println(str1.equalsIgnoreCase(str3));
+    }
+}
+output:
+true
+false
+
+14.//format
+public class FormatExample2 {
+    public static void main(String[] args) {
+
+        String firstName = "Domnic";
+        String lastName = "Torreto";
+        int age = 20;
+
+        String info = String.format("Name: %s %s, Age: %d", firstName, lastName, age);
+
+        System.out.println(info);
+    }
+}
+output:
+Name: Domnic Torreto, Age: 20
+
+15.//get Bytes
+import java.util.Arrays;
+
+public class GetBytesExample {
+    public static void main(String[] args) {
+
+        String str = "Harsha";
+
+        byte[] bytes = str.getBytes();
+
+        System.out.println("Byte values: " + Arrays.toString(bytes));
+    }
+}
+output:
+Byte values: [72, 97, 114, 115, 104, 97]
+
+16.//get char
+public class GetCharsExample2 {
+    public static void main(String[] args) {
+
+        String str = "fighting";
+
+        char[] arr = new char[4];
+
+        str.getChars(3, 7, arr, 0);
+
+        System.out.println(arr);
+    }
+}
+output:
+htin
+
+17.//Hash code
+public class HashCodeExample {
+    public static void main(String[] args) {
+
+        String name1 = "Holland";
+        String name2 = "Fergussion";
+        String name3 = "John deer";
+
+        System.out.println("Hash code of name1: " + name1.hashCode());
+        System.out.println("Hash code of name2: " + name2.hashCode());
+        System.out.println("Hash code of name3: " + name3.hashCode());
+    }
+}
+output:
+Hash code of name1: -1538321520
+Hash code of name2: -1540490585
+Hash code of name3: 563715779
+
+18.//index Of
+public class IndexOfExample {
+    public static void main(String[] args) {
+
+        String name = "Creta";
+
+        System.out.println("Index of R: " + name.indexOf('R'));
+        System.out.println("Index of a: " + name.indexOf('a'));
+        System.out.println("Index of Creta: " + name.indexOf("Creta"));
+    }
+}
+output:
+Index of R: -1
+Index of a: 4
+Index of Creta: 0
+
+19.//Is empty
+public class IsEmptyExample {
+    public static void main(String[] args) {
+
+        String name1 = "";
+        String name2 = "Tarak";
+
+        System.out.println("Is name1 empty? " + name1.isEmpty());
+        System.out.println("Is name2 empty? " + name2.isEmpty());
+    }
+}
+output:
+Is name1 empty? true
+Is name2 empty? false
+
+20.//join
+public class JoinExample {
+    public static void main(String[] args) {
+
+        String firstName = "Radha";
+        String lastName = "Krishna";
+
+        String fullName = String.join(" ", firstName, lastName);
+
+        System.out.println("Full Name: " + fullName);
+    }
+}
+output:
+Full Name: Radha Krishna
+
+21.//last Index Of
+public class LastIndexOfExample {
+    public static void main(String[] args) {
+
+        String str = "Rahul Sharma";
+
+        System.out.println("Last index of a: " + str.lastIndexOf('a'));
+        System.out.println("Last index of Rahul: " + str.lastIndexOf("Rahul"));
+        System.out.println("Last index of z: " + str.lastIndexOf('z'));
+    }
+}
+output:
+Last index of a: 11
+Last index of Rahul: 0
+Last index of z: -1
+
+22.//length
+public class LengthExample {
+    public static void main(String[] args) {
+
+        String name = "King kong";
+
+        int length = name.length();
+
+        System.out.println("Length of string: " + length);
+    }
+}
+output:
+Length of string: 9
+
+23.//matches
+public class MatchesExample {
+    public static void main(String[] args) {
+
+        String name = "Rahul123";
+
+        System.out.println(name.matches("Rahul123"));
+        System.out.println(name.matches("[A-Za-z]+"));
+        System.out.println(name.matches("[A-Za-z0-9]+"));
+    }
+}
+output:
+true
+false
+false
+
+24.//replace
+public class ReplaceExample {
+    public static void main(String[] args) {
+
+        String sentence = "Kiran likes Cricket";
+
+        String result = sentence.replace("Kiran", "Arjun");
+
+        System.out.println("Original String: " + sentence);
+        System.out.println("After Replace: " + result);
+    }
+}
+output:
+Original String: Kiran likes Cricket
+After Replace: Arjun likes Cricket
+
+25.//replace All
+public class ReplaceAllExample {
+    public static void main(String[] args) {
+
+        String text = "Ravi123 Kumar456";
+
+        String result = text.replaceAll("[0-9]", "");
+
+        System.out.println("Original String: " + text);
+        System.out.println("After ReplaceAll: " + result);
+    }
+}
+output:
+Original String: Ravi123 Kumar456
+After ReplaceAll: Ravi Kumar
+
+26.//replace First
+public class ReplaceFirstExample {
+    public static void main(String[] args) {
+
+        String text = "Apple Mango Apple";
+
+        String result = text.replaceFirst("Apple", "Orange");
+
+        System.out.println("Original String: " + text);
+        System.out.println("After ReplaceFirst: " + result);
+    }
+}
+output:
+Original String: Apple Mango Apple
+After ReplaceFirst: Orange Mango Apple
+
+27.//split
+public class SplitExample {
+    public static void main(String[] args) {
+
+        String names = "Arjun,Rohan,Meena";
+
+        String[] result = names.split(",");
+
+        for (String name : result) {
+            System.out.println(name);
+        }
+    }
+}
+output:
+Arjun
+Rohan
+Meena
+
+28.//starts with
+public class StartsWithExample {
+    public static void main(String[] args) {
+
+        String message = "Welcome Rahul";
+
+        System.out.println(message.startsWith("Welcome"));
+        System.out.println(message.startsWith("Rahul"));
+        System.out.println(message.startsWith("Hello"));
+    }
+}
+output:
+true
+false
+false
+
+29.//sub sequence
+public class SubSequenceExample {
+    public static void main(String[] args) {
+
+        String text = "Programming";
+
+        CharSequence result = text.subSequence(3, 8);
+
+        System.out.println("Original String: " + text);
+        System.out.println("Sub Sequence: " + result);
+    }
+}
+output:
+Original String: Programming
+Sub Sequence: gramm
+
+30..//substream
+import java.util.Arrays;
+import java.util.List;
+
+public class StreamExample {
+    public static void main(String[] args) {
+
+        List<String> names = Arrays.asList("Arjun", "Kiran", "Meena", "Ravi", "Sita");
+
+        names.stream()
+             .skip(1)
+             .limit(3)
+             .forEach(System.out::println);
+    }
+}
+output:
+Kiran
+Meena
+Ravi
+
+31.//to char array
+public class ToCharArrayExample {
+    public static void main(String[] args) {
+
+        String name = "Arjun";
+
+        char[] characters = name.toCharArray();
+
+        for (char ch : characters) {
+            System.out.println(ch);
+        }
+    }
+}
+output:
+A
+r
+j
+u
+n
+
+32.//to lower case
+public class ToLowerCaseExample {
+    public static void main(String[] args) {
+
+        String name = "ARJUN KUMAR";
+
+        String result = name.toLowerCase();
+
+        System.out.println("Original String: " + name);
+        System.out.println("Lowercase String: " + result);
+    }
+}
+output:
+Original String: ARJUN KUMAR
+Lowercase String: arjun kumar
+
+33.//to upper case
+public class ToUpperCaseExample {
+    public static void main(String[] args) {
+
+        String name = "william turnner";
+
+        String result = name.toUpperCase();
+
+        System.out.println("Original String: " + name);
+        System.out.println("Uppercase String: " + result);
+    }
+}
+output:
+Original String: william turnner
+Uppercase String: WILLIAM TURNNER
+
+34.//to string
+public class ToStringExample {
+    public static void main(String[] args) {
+
+        Integer number = 123;
+
+        String result = number.toString();
+
+        System.out.println("String value: " + result);
+    }
+}
+output:
+String value: 123
+
+35.//trim
+public class TrimExample {
+    public static void main(String[] args) {
+
+        String name = "   Arjun Kumar   ";
+
+        String result = name.trim();
+
+        System.out.println("Original String: " + name);
+        System.out.println("After Trim: " + result);
+    }
+}
+output:
+Original String:    Arjun Kumar   
+After Trim: Arjun Kumar
+
+36.//value off
+public class ValueOfExample {
+    public static void main(String[] args) {
+
+        int number = 100;
+        double price = 99.50;
+        char letter = 'A';
+        boolean status = true;
+
+        String str1 = String.valueOf(number);
+        String str2 = String.valueOf(price);
+        String str3 = String.valueOf(letter);
+        String str4 = String.valueOf(status);
+
+        System.out.println(str1);
+        System.out.println(str2);
+        System.out.println(str3);
+        System.out.println(str4);
+    }
+}
+output:
+100
+99.5
+A
+true
+
+
+
+
+
+
+
+
+
