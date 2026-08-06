@@ -1,0 +1,95 @@
+1.Default Constructor.
+class Student {
+
+    String name;
+    int age;
+
+    // Default Constructor
+    Student() {
+        name = "John";
+        age = 20;
+    }
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+        s.display();
+    }
+}
+output:
+Name: John
+Age: 20
+
+2. Parameterized Constructor.
+class Employee {
+
+    String name;
+    int salary;
+
+    // Parameterized Constructor
+    Employee(String n, int s) {
+        name = n;
+        salary = s;
+    }
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+    }
+
+    public static void main(String[] args) {
+
+        Employee e = new Employee("Alex", 50000);
+
+        e.display();
+    }
+}
+output:
+Name: Alex
+Salary: 50000
+
+3.Copy Constructor.
+class Student {
+
+    String name;
+    int age;
+
+    // Parameterized Constructor
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+
+    // Copy Constructor
+    Student(Student s) {
+        name = s.name;
+        age = s.age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+
+    public static void main(String[] args) {
+
+        Student s1 = new Student("John", 20);
+
+        // Copying object s1 into s2
+        Student s2 = new Student(s1);
+
+        s1.display();
+        s2.display();
+    }
+}
+output:
+Name: John
+Age: 20
+Name: John
+Age: 20
