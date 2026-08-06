@@ -1,0 +1,62 @@
+1.object
+import java.util.Scanner;
+
+class Student {
+    int id;
+    String name;
+
+    void display() {
+        System.out.println("Student ID: " + id);
+        System.out.println("Student Name: " + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Student s1 = new Student();
+
+        System.out.print("Enter Student ID: ");
+        s1.id = sc.nextInt();
+
+        sc.nextLine(); // Consume newline
+
+        System.out.print("Enter Student Name: ");
+        s1.name = sc.nextLine();
+
+        System.out.println("\nStudent Details:");
+        s1.display();
+
+        sc.close();
+    }
+}
+output
+Enter Student ID: 5055
+Enter Student Name: pavan
+
+Student Details:
+Student ID: 5055
+Student Name: pavan
+2.class
+public class Student {
+
+    int id;
+    String name;
+
+    void display() {
+        System.out.println("Student ID: " + id);
+        System.out.println("Student Name: " + name);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+
+        s1.id = 101;
+        s1.name = "Pavan";
+
+        s1.display();
+    }
+}
+output
+Student ID: 101
