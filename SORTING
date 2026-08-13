@@ -81,3 +81,183 @@ Sorted array:
 1 2 3 5 8
 
 
+//MERGE sorting.
+public class MergeSort {
+
+    public static void mergeSort(int[] array, int left, int right) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+
+            mergeSort(array, left, mid);       // Sort left half
+            mergeSort(array, mid + 1, right);  // Sort right half
+            merge(array, left, mid, right);    // Merge sorted halves
+        }
+    }
+
+    private static void merge(int[] array, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        int[] leftArray = new int[n1];
+        int[] rightArray = new int[n2];
+
+        System.arraycopy(array, left, leftArray, 0, n1);
+        System.arraycopy(array, mid + 1, rightArray, 0, n2);
+
+        int i = 0, j = 0, k = left;
+
+        while (i < n1 && j < n2) {
+            if (leftArray[i] <= rightArray[j]) {
+                array[k++] = leftArray[i++];
+            } else {
+                array[k++] = rightArray[j++];
+            }
+        }
+
+        while (i < n1) {
+            array[k++] = leftArray[i++];
+        }
+
+        while (j < n2) {
+            array[k++] = rightArray[j++];
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] data = {38, 27, 43, 3, 9, 82, 10};
+
+        System.out.println("Before sorting:");
+        for (int num : data) {
+            System.out.print(num + " ");
+        }
+
+        mergeSort(data, 0, data.length - 1);
+
+        System.out.println("\nAfter sorting:");
+        for (int num : data) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+output;
+Before sorting:
+38 27 43 3 9 82 10 
+After sorting:
+3 9 10 27 38 43 82 
+
+//Exception Handling
+try catch block
+
+try {
+    int[] arr = new int[5];
+    arr[10] = 50; // ArrayIndexOutOfBoundsException
+} catch (ArithmeticException e) {
+    System.out.println("Arithmetic error: " + e.getMessage());
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Array error: " + e.getMessage());
+} catch (Exception e) {
+    System.out.println("General error: " + e.getMessage());
+}
+output:
+ERROR!
+Error: / by zero
+This block always executes.
+
+1. Multi-catch block.
+public class MultiCatchExample {
+    public static void main(String[] args) {
+        int[] numbers = {10, 20, 30};
+
+        try {
+            System.out.println(numbers[5] / 0);
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught exception: " + e);
+        }
+    }
+}
+output:
+Caught exception: java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 3
+
+2.Finally block.
+public class FinallyExample {
+    public static void main(String[] args) {
+        try {
+            int result = 100 / 5;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+        } finally {
+            System.out.println("Finally block executed — cleanup done.");
+        }
+
+        try {
+            int result = 100 / 0;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+        } finally {
+            System.out.println("Finally block executed — cleanup done.");
+        }
+    }
+}
+output:
+Result: 20
+Finally block executed — cleanup done.
+Caught exception: / by zero
+Finally block executed — cleanup done.
+
+3. throw.
+public class ThrowExample {
+
+    public static void checkAge(int age) {
+        if (age < 18) {
+            throw new IllegalArgumentException("Age must be 18 or above. Provided: " + age);
+        }
+        System.out.println("Access granted. Age: " + age);
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(15);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+        }
+
+        checkAge(25); // valid case, no exception
+    }
+}
+output.
+Caught exception: Age must be 18 or above. Provided: 15
+Access granted. Age: 25
+
+4. throws.
+import java.io.IOException;
+
+public class ThrowsExample {
+
+    // Declares it might throw IOException; caller must handle it
+    public static void readFile(String filename) throws IOException {
+        if (!filename.endsWith(".txt")) {
+            throw new IOException("Invalid file format: " + filename);
+        }
+        System.out.println("Reading file: " + filename);
+    }
+
+    public static void main(String[] args) {
+        try {
+            readFile("data.csv");
+        } catch (IOException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+        }
+
+        try {
+            readFile("data.txt");
+        } catch (IOException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+        }
+    }
+}
+output:
+Caught exception: Invalid file format: data.csv
+Reading file: data.txt
