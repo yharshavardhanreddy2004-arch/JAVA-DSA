@@ -479,7 +479,7 @@ After Updating:
 21 -> 42 -> 50 -> 23 -> NULL
 
 
-Deleted Head.
+//Deleted Head.
 class DeleteHead {
 
     static class Node {
