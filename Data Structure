@@ -1,0 +1,479 @@
+////Linked List.
+1. Singly Linked List.
+// Singly Linked List in Java
+
+class SinglyLinkedList {
+
+    // Node class
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    Node head = null;
+
+    // Insert a node at the end
+    void insert(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+
+            temp.next = newNode;
+        }
+    }
+
+    // Display the linked list
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+
+    // Main method
+    public static void main(String[] args) {
+
+        SinglyLinkedList list = new SinglyLinkedList();
+
+        list.insert(10);
+        list.insert(20);
+        list.insert(30);
+        list.insert(40);
+
+        System.out.println("Singly Linked List:");
+        list.display();
+    }
+}
+
+output:
+Singly Linked List:
+10 -> 20 -> 30 -> 40 -> NULL
+
+2. Doubly Linked List.
+// Doubly Linked List in Java
+
+class DoublyLinkedList {
+
+    // Node class
+    class Node {
+        int data;
+        Node prev;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.prev = null;
+            this.next = null;
+        }
+    }
+
+    Node head = null;
+
+    // Insert a node at the end
+    void insert(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+
+            temp.next = newNode;
+            newNode.prev = temp;
+        }
+    }
+
+    // Display from beginning to end
+    void displayForward() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " <-> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+
+    // Display from end to beginning
+    void displayBackward() {
+        Node temp = head;
+
+        // Move to the last node
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        // Traverse backward
+        while (temp != null) {
+            System.out.print(temp.data + " <-> ");
+            temp = temp.prev;
+        }
+
+        System.out.println("NULL");
+    }
+
+    // Main method
+    public static void main(String[] args) {
+
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insert(10);
+        list.insert(20);
+        list.insert(30);
+        list.insert(40);
+
+        System.out.println("Doubly Linked List (Forward):");
+        list.displayForward();
+
+        System.out.println("Doubly Linked List (Backward):");
+        list.displayBackward();
+    }
+}
+
+output:
+Doubly Linked List (Forward):
+10 <-> 20 <-> 30 <-> 40 <-> NULL
+
+Doubly Linked List (Backward):
+40 <-> 30 <-> 20 <-> 10 <-> NULL
+
+3. Circular Linked List.
+// Circular Singly Linked List in Java
+
+class CircularSinglyLinkedList {
+
+    // Node class
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    Node head = null;
+
+    // Insert a node at the end
+    void insert(int data) {
+        Node newNode = new Node(data);
+
+        // If list is empty
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+        } else {
+            Node temp = head;
+
+            // Find the last node
+            while (temp.next != head) {
+                temp = temp.next;
+            }
+
+            temp.next = newNode;
+            newNode.next = head;
+        }
+    }
+
+    // Display the circular linked list
+    void display() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        Node temp = head;
+
+        do {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        } while (temp != head);
+
+        System.out.println("(Back to Head)");
+    }
+
+    // Main method
+    public static void main(String[] args) {
+
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList();
+
+        list.insert(10);
+        list.insert(20);
+        list.insert(30);
+        list.insert(40);
+
+        System.out.println("Circular Singly Linked List:");
+        list.display();
+    }
+}
+output:
+Circular Singly Linked List:
+10 -> 20 -> 30 -> 40 -> (Back to Head)
+
+        ┌─────────────────────────────┐
+        ↓                             │
+      [10] → [20] → [30] → [40] ─────┘
+       ↑
+      HEAD
+
+//5 Basic operations in the linked list.
+1.Insertion
+class Insertion {
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Node head = new Node(10);
+        head.next = new Node(20);
+        head.next.next = new Node(30);
+
+        // Create a new node
+        Node newNode = new Node(40);
+
+        // Find the last node
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        // Insert new node at the end
+        temp.next = newNode;
+
+        System.out.println("After Insertion:");
+
+        temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+}
+output:
+After Insertion:
+10 -> 20 -> 30 -> 40 -> NULL
+
+2.Traversal.
+class Traversal {
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Node head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = new Node(4);
+        head.next.next.next.next = new Node(5);
+
+        Node temp = head;
+
+        System.out.println("Linked List:");
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+}
+
+output:
+Linked List:
+1 -> 2 -> 3 -> 4 -> 5 -> NULL
+
+3. Deletion.
+class Deletion {
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Node head = new Node(100);
+        head.next = new Node(200);
+        head.next.next = new Node(300);
+        head.next.next.next = new Node(400);
+
+        int value = 200;
+
+        if (head != null && head.data == value) {
+            head = head.next;
+        } else {
+
+            Node temp = head;
+
+            while (temp != null && temp.next != null) {
+
+                if (temp.next.data == value) {
+                    temp.next = temp.next.next;
+                    break;
+                }
+
+                temp = temp.next;
+            }
+        }
+
+        System.out.println("After Deletion:");
+
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+}
+output:
+After Deletion:
+100 -> 300 -> 400 -> NULL
+
+4. Searching.
+class Searching {
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Node head = new Node(100);
+        head.next = new Node(200);
+        head.next.next = new Node(300);
+        head.next.next.next = new Node(400);
+
+        int searchValue = 300;
+
+        Node temp = head;
+        boolean found = false;
+
+        while (temp != null) {
+
+            if (temp.data == searchValue) {
+                found = true;
+                break;
+            }
+
+            temp = temp.next;
+        }
+
+        if (found) {
+            System.out.println(searchValue + " found in the linked list.");
+        } else {
+            System.out.println(searchValue + " not found in the linked list.");
+        }
+    }
+}
+
+output:
+300 found in the linked list.
+
+5. Updating.
+class Updating {
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Node head = new Node(21);
+        head.next = new Node(42);
+        head.next.next = new Node(67);
+        head.next.next.next = new Node(23);
+
+        int oldValue = 67;
+        int newValue = 50;
+
+        Node temp = head;
+
+        while (temp != null) {
+
+            if (temp.data == oldValue) {
+                temp.data = newValue;
+                break;
+            }
+
+            temp = temp.next;
+        }
+
+        System.out.println("After Updating:");
+
+        temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+}
+
+output:
+After Updating:
+21 -> 42 -> 50 -> 23 -> NULL
