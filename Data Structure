@@ -477,3 +477,154 @@ class Updating {
 output:
 After Updating:
 21 -> 42 -> 50 -> 23 -> NULL
+
+
+Deleted Head.
+class DeleteHead {
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Node head = new Node(21);
+        head.next = new Node(42);
+        head.next.next = new Node(67);
+        head.next.next.next = new Node(23);
+
+        System.out.println("Before Deletion:");
+
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+
+        // Delete the head node
+        head = head.next;
+
+        System.out.println("After Deleting Head:");
+
+        temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+}
+output:
+Before Deletion:
+21 -> 42 -> 67 -> 23 -> NULL
+
+After Deleting Head:
+42 -> 67 -> 23 -> NULL
+
+//Building the node by using the position.
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    // Insert node at a given position
+    void insertAtPosition(int data, int position) {
+        Node newNode = new Node(data);
+
+        // Insert at head
+        if (position == 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        // Move to the node before the required position
+        for (int i = 0; i < position - 1 && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        // Invalid position
+        if (temp == null) {
+            System.out.println("Invalid position");
+            return;
+        }
+
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
+    // Delete the head node
+    void deleteHead() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        head = head.next;
+    }
+
+    // Display the linked list
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        // Building nodes using position
+        list.insertAtPosition(10, 0);
+        list.insertAtPosition(20, 1);
+        list.insertAtPosition(30, 2);
+        list.insertAtPosition(40, 3);
+
+        System.out.println("Original List:");
+        list.display();
+
+        // Delete head
+        list.deleteHead();
+
+        System.out.println("After deleting head:");
+        list.display();
+    }
+}
+
+output:
+Original List:
+10 -> 20 -> 30 -> 40 -> NULL
+
+After deleting head:
+20 -> 30 -> 40 -> NULL.
+
+
+
+
