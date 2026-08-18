@@ -1,0 +1,1095 @@
+INSERTION OPERATIONS.
+
+1. Insertion at Beginning.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+
+        newNode.next = head;
+
+        if (head != null) {
+            head.prev = newNode;
+        }
+
+        head = newNode;
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtBeginning(30);
+        list.insertAtBeginning(20);
+        list.insertAtBeginning(10);
+
+        System.out.println("After insertion at beginning:");
+        list.display();
+    }
+}
+
+output:
+
+After insertion at beginning:
+10 20 30 
+
+2. Insertion at End.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(70);
+        list.insertAtEnd(80);
+        list.insertAtEnd(90);
+
+        System.out.println("After insertion at end:");
+        list.display();
+    }
+}
+
+output:
+After insertion at end:
+70 80 90 
+
+3. Insertion at Middle / Specific Position.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtPosition(int data, int position) {
+        Node newNode = new Node(data);
+
+        if (position == 1) {
+            newNode.next = head;
+
+            if (head != null) {
+                head.prev = newNode;
+            }
+
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        for (int i = 1; i < position - 1 && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Invalid position");
+            return;
+        }
+
+        newNode.next = temp.next;
+        newNode.prev = temp;
+
+        if (temp.next != null) {
+            temp.next.prev = newNode;
+        }
+
+        temp.next = newNode;
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtPosition(100, 1);
+        list.insertAtPosition(110, 2);
+        list.insertAtPosition(120, 3);
+
+        list.insertAtPosition(115, 3);
+
+        System.out.println("After insertion at position 3:");
+        list.display();
+    }
+}
+output:
+After insertion at position 3:
+100 110 115 120 
+
+4.Insert at a Position
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtPosition(int data, int position) {
+        Node newNode = new Node(data);
+
+        // Insert at beginning
+        if (position == 1) {
+            newNode.next = head;
+
+            if (head != null) {
+                head.prev = newNode;
+            }
+
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        // Move to the node before the required position
+        for (int i = 1; i < position - 1 && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Invalid position");
+            return;
+        }
+
+        newNode.next = temp.next;
+        newNode.prev = temp;
+
+        if (temp.next != null) {
+            temp.next.prev = newNode;
+        }
+
+        temp.next = newNode;
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtPosition(10, 1);
+        list.insertAtPosition(20, 2);
+        list.insertAtPosition(30, 3);
+
+        // Insert 35 at position 3
+        list.insertAtPosition(35, 3);
+
+        System.out.println("After insertion at position 3:");
+        list.display();
+    }
+}
+output:
+After insertion at position 3:
+10 20 35 30 
+
+
+
+//DELETION OPERATIONS.
+
+1.Deletion at Beginning.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void deleteAtBeginning() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        head = head.next;
+
+        if (head != null) {
+            head.prev = null;
+        }
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(130);
+        list.insertAtEnd(140);
+        list.insertAtEnd(150);
+
+        list.deleteAtBeginning();
+
+        System.out.println("After deletion at beginning:");
+        list.display();
+    }
+}
+output:
+After deletion at beginning:
+140 150 
+
+2.Deletion at End.
+
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void deleteAtEnd() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.prev.next = null;
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(160);
+        list.insertAtEnd(170);
+        list.insertAtEnd(180);
+
+        list.deleteAtEnd();
+
+        System.out.println("After deletion at end:");
+        list.display();
+    }
+}
+output:
+After deletion at end:
+160 170 
+
+3.Deletion at Middle / Specific Position.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void deleteAtPosition(int position) {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        Node temp = head;
+
+        if (position == 1) {
+            head = head.next;
+
+            if (head != null) {
+                head.prev = null;
+            }
+
+            return;
+        }
+
+        for (int i = 1; i < position && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Invalid position");
+            return;
+        }
+
+        if (temp.next != null) {
+            temp.next.prev = temp.prev;
+        }
+
+        if (temp.prev != null) {
+            temp.prev.next = temp.next;
+        }
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(190);
+        list.insertAtEnd(200);
+        list.insertAtEnd(210);
+
+        list.deleteAtPosition(2);
+
+        System.out.println("After deletion at position 2:");
+        list.display();
+    }
+}
+output:
+After deletion at position 2:
+190 210 
+
+4.Delete at a Position.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void deleteAtPosition(int position) {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        Node temp = head;
+
+        // Delete first node
+        if (position == 1) {
+            head = head.next;
+
+            if (head != null) {
+                head.prev = null;
+            }
+
+            return;
+        }
+
+        // Move to the required position
+        for (int i = 1; i < position && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Invalid position");
+            return;
+        }
+
+        // Connect previous node to next node
+        if (temp.prev != null) {
+            temp.prev.next = temp.next;
+        }
+
+        // Connect next node to previous node
+        if (temp.next != null) {
+            temp.next.prev = temp.prev;
+        }
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(40);
+        list.insertAtEnd(50);
+        list.insertAtEnd(60);
+        list.insertAtEnd(70);
+
+        // Delete node at position 2
+        list.deleteAtPosition(2);
+
+        System.out.println("After deletion at position 2:");
+        list.display();
+    }
+}
+
+output:
+After deletion at position 2:
+40 60 70 
+
+// TRAVERSAL
+
+1. Forward Traversal.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void forwardTraversal() {
+        Node temp = head;
+
+        System.out.println("Forward Traversal:");
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(10);
+        list.insertAtEnd(25);
+        list.insertAtEnd(40);
+        list.insertAtEnd(55);
+
+        list.forwardTraversal();
+    }
+}
+
+output:
+Forward Traversal:
+10 25 40 55 
+
+2. Backward Traversal.
+
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void backwardTraversal() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        System.out.println("Backward Traversal:");
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.prev;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(15);
+        list.insertAtEnd(30);
+        list.insertAtEnd(45);
+        list.insertAtEnd(60);
+
+        list.backwardTraversal();
+    }
+}
+
+output:
+Backward Traversal:
+60 45 30 15 
+
+//Searching.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void search(int value) {
+        Node temp = head;
+        int position = 1;
+
+        while (temp != null) {
+            if (temp.data == value) {
+                System.out.println(value + " found at position " + position);
+                return;
+            }
+
+            temp = temp.next;
+            position++;
+        }
+
+        System.out.println(value + " not found");
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(12);
+        list.insertAtEnd(24);
+        list.insertAtEnd(36);
+        list.insertAtEnd(48);
+
+        list.search(36);
+    }
+}
+ output:
+36 found at position 3
+
+//Updating.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void update(int oldValue, int newValue) {
+        Node temp = head;
+
+        while (temp != null) {
+            if (temp.data == oldValue) {
+                temp.data = newValue;
+                System.out.println("Value updated successfully");
+                return;
+            }
+
+            temp = temp.next;
+        }
+
+        System.out.println("Value not found");
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(11);
+        list.insertAtEnd(23);
+        list.insertAtEnd(35);
+        list.insertAtEnd(47);
+
+        list.update(23, 27);
+
+        System.out.println("After updating:");
+        list.display();
+    }
+}
+
+output:
+Value updated successfully
+After updating:
+11 27 35 47 
+
+//Counting.
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void countNodes() {
+        Node temp = head;
+        int count = 0;
+
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+
+        System.out.println("Total number of nodes: " + count);
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(14);
+        list.insertAtEnd(28);
+        list.insertAtEnd(42);
+        list.insertAtEnd(56);
+        list.insertAtEnd(68);
+
+        list.countNodes();
+    }
+}
+output:
+Total number of nodes: 5
+
+//Reversing.
+
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void reverse() {
+        Node current = head;
+        Node temp = null;
+
+        while (current != null) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+
+            current = current.prev;
+        }
+
+        if (temp != null) {
+            head = temp.prev;
+        }
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(13);
+        list.insertAtEnd(26);
+        list.insertAtEnd(39);
+        list.insertAtEnd(52);
+
+        System.out.println("Before reversing:");
+        list.display();
+
+        list.reverse();
+
+        System.out.println("\nAfter reversing:");
+        list.display();
+    }
+}
+
+output:
+Before reversing:
+13 26 39 52 
+After reversing:
+52 39 26 13 
+
+//Sorting.
+
+class DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+
+    void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void sort() {
+        Node current = head;
+
+        while (current != null) {
+            Node nextNode = current.next;
+
+            while (nextNode != null) {
+                if (current.data > nextNode.data) {
+                    int temp = current.data;
+                    current.data = nextNode.data;
+                    nextNode.data = temp;
+                }
+
+                nextNode = nextNode.next;
+            }
+
+            current = current.next;
+        }
+    }
+
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtEnd(91);
+        list.insertAtEnd(37);
+        list.insertAtEnd(74);
+        list.insertAtEnd(18);
+
+        System.out.println("Before sorting:");
+        list.display();
+
+        list.sort();
+
+        System.out.println("\nAfter sorting:");
+        list.display();
+    }
+}
+
+output:
+Before sorting:
+91 37 74 18 
+After sorting:
+18 37 74 91 
