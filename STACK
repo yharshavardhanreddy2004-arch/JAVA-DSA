@@ -1,0 +1,283 @@
+1. PUSH.
+ import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(56);
+        stack.push(29);
+        stack.push(48);
+
+        System.out.println(stack);
+    }
+}
+output:
+[56, 29, 48]
+
+2. POP.
+ import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        System.out.println("Before Pop: " + stack);
+
+        int x = stack.pop();
+
+        System.out.println("Deleted: " + x);
+        System.out.println("After Pop: " + stack);
+    }
+}
+output:
+Before Pop: [10, 20, 30]
+Deleted: 30
+After Pop: [10, 20]
+
+3. PEEK.
+ import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(34);
+        stack.push(97);
+        stack.push(21);
+
+        int x = stack.peek();
+
+        System.out.println("Top element: " + x);
+    }
+}
+output:
+Top element: 21
+
+4. isEmpty() — Returns TRUE or FALSE
+   import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        System.out.println(stack.isEmpty());
+
+        stack.push(10);
+
+        System.out.println(stack.isEmpty());
+    }
+}
+output:
+true
+false
+
+5. PEEK — Return Value
+   import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        int value = stack.peek();
+
+        System.out.println("Peek value = " + value);
+    }
+}
+output:
+Peek value = 30
+
+ 6. Minimum Element
+    import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(47);
+        stack.push(12);
+        stack.push(89);
+        stack.push(3);
+        stack.push(65);
+        stack.push(28);
+        stack.push(91);
+        stack.push(16);
+
+        int min = stack.get(0);
+
+        for (int i = 1; i < stack.size(); i++) {
+            if (stack.get(i) < min) {
+                min = stack.get(i);
+            }
+        }
+
+        System.out.println("Stack: " + stack);
+        System.out.println("Minimum = " + min);
+    }
+}
+output:
+Stack: [47, 12, 89, 3, 65, 28, 91, 16]
+Minimum = 3
+
+7.Maximum Element.
+  import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(72);
+        stack.push(18);
+        stack.push(94);
+        stack.push(7);
+        stack.push(53);
+        stack.push(31);
+        stack.push(86);
+        stack.push(24);
+
+        int max = stack.get(0);
+
+        for (int i = 1; i < stack.size(); i++) {
+            if (stack.get(i) > max) {
+                max = stack.get(i);
+            }
+        }
+
+        System.out.println("Stack: " + stack);
+        System.out.println("Maximum = " + max);
+    }
+}
+
+output:
+Stack: [72, 18, 94, 7, 53, 31, 86, 24]
+Maximum = 94
+
+8.Duplicate Elements.
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(63);
+        stack.push(27);
+        stack.push(91);
+        stack.push(14);
+        stack.push(63);
+        stack.push(48);
+        stack.push(27);
+        stack.push(82);
+        stack.push(35);
+        stack.push(91);
+
+        Stack<Integer> result = new Stack<>();
+
+        for (int i = 0; i < stack.size(); i++) {
+            if (!result.contains(stack.get(i))) {
+                result.push(stack.get(i));
+            }
+        }
+
+        System.out.println("Original Stack: " + stack);
+        System.out.println("After Removing Duplicates: " + result);
+    }
+}
+
+output:
+Original Stack: [63, 27, 91, 14, 63, 48, 27, 82, 35, 91]
+After Removing Duplicates: [63, 27, 91, 14, 48, 82, 35]
+
+9.second largest integer.
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(63);
+        stack.push(27);
+        stack.push(91);
+        stack.push(14);
+        stack.push(48);
+        stack.push(82);
+        stack.push(35);
+        stack.push(76);
+
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+
+        for (int i = 0; i < stack.size(); i++) {
+
+            int value = stack.get(i);
+
+            if (value > largest) {
+                secondLargest = largest;
+                largest = value;
+            }
+            else if (value > secondLargest && value != largest) {
+                secondLargest = value;
+            }
+        }
+
+        System.out.println("Stack: " + stack);
+        System.out.println("Largest = " + largest);
+        System.out.println("Second Largest = " + secondLargest);
+    }
+}
+
+output:
+Stack: [63, 27, 91, 14, 48, 82, 35, 76]
+Largest = 91
+Second Largest = 82
+
+10.Remove Duplicate Integers.
+   import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(56);
+        stack.push(23);
+        stack.push(78);
+        stack.push(45);
+        stack.push(23);
+        stack.push(91);
+        stack.push(56);
+        stack.push(34);
+        stack.push(78);
+
+        Stack<Integer> result = new Stack<>();
+
+        for (int i = 0; i < stack.size(); i++) {
+            if (!result.contains(stack.get(i))) {
+                result.push(stack.get(i));
+            }
+        }
+
+        System.out.println("Original Stack: " + stack);
+        System.out.println("After Removing Duplicates: " + result);
+    }
+}
+output:
+Original Stack: [56, 23, 78, 45, 23, 91, 56, 34, 78]
+After Removing Duplicates: [56, 23, 78, 45, 91, 34]
+
