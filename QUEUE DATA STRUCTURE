@@ -1,0 +1,258 @@
+1. Enqueue — Insert
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(45);
+        queue.add(12);
+        queue.add(78);
+        queue.add(23);
+
+        System.out.println("Queue: " + queue);
+    }
+}
+Output:
+Queue: [45, 12, 78, 23]
+
+2. Dequeue — Remove
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(67);
+        queue.add(21);
+        queue.add(89);
+        queue.add(34);
+
+        System.out.println("Before Dequeue: " + queue);
+
+        int removed = queue.remove();
+
+        System.out.println("Removed: " + removed);
+        System.out.println("After Dequeue: " + queue);
+    }
+}
+Output:
+Before Dequeue: [67, 21, 89, 34]
+Removed: 67
+After Dequeue: [21, 89, 34]
+
+3. Peek — Return Front Element
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(56);
+        queue.add(91);
+        queue.add(18);
+        queue.add(43);
+
+        int front = queue.peek();
+
+        System.out.println("Queue: " + queue);
+        System.out.println("Front Element: " + front);
+    }
+}
+Output:
+Queue: [56, 91, 18, 43]
+Front Element: 56
+
+4. isEmpty — Returns True or False
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        System.out.println("Is Queue Empty? " + queue.isEmpty());
+
+        queue.add(72);
+
+        System.out.println("Is Queue Empty? " + queue.isEmpty());
+    }
+}
+Output:
+Is Queue Empty? true
+Is Queue Empty? false
+
+5. Size — Number of Elements
+  import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(15);
+        queue.add(83);
+        queue.add(41);
+        queue.add(97);
+        queue.add(26);
+
+        int size = queue.size();
+
+        System.out.println("Queue: " + queue);
+        System.out.println("Queue Size: " + size);
+    }
+}
+Output:
+Queue: [15, 83, 41, 97, 26]
+Queue Size: 5
+
+**Reverse a Stack
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(25);
+        stack.push(71);
+        stack.push(14);
+        stack.push(89);
+        stack.push(36);
+
+        System.out.println("Original Stack: " + stack);
+
+        Stack<Integer> reverse = new Stack<>();
+
+        while (!stack.isEmpty()) {
+            reverse.push(stack.pop());
+        }
+
+        System.out.println("Reversed Stack: " + reverse);
+    }
+}
+Output:
+Original Stack: [25, 71, 14, 89, 36]
+Reversed Stack: [36, 89, 14, 71, 25]
+
+**Duplicate Elements in Queue.
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(45);
+        queue.add(72);
+        queue.add(18);
+        queue.add(45);
+        queue.add(91);
+        queue.add(72);
+        queue.add(34);
+        queue.add(18);
+
+        System.out.println("Queue: " + queue);
+
+        System.out.println("Duplicate Elements:");
+
+        for (int i = 0; i < queue.size(); i++) {
+
+            int count = 0;
+            int value = ((LinkedList<Integer>) queue).get(i);
+
+            for (int j = 0; j < queue.size(); j++) {
+                if (((LinkedList<Integer>) queue).get(j) == value) {
+                    count++;
+                }
+            }
+
+            if (count > 1) {
+
+                boolean alreadyPrinted = false;
+
+                for (int k = 0; k < i; k++) {
+                    if (((LinkedList<Integer>) queue).get(k) == value) {
+                        alreadyPrinted = true;
+                    }
+                }
+
+                if (!alreadyPrinted) {
+                    System.out.println(value);
+                }
+            }
+        }
+    }
+}
+
+Output:
+Queue: [45, 72, 18, 45, 91, 72, 34, 18]
+Duplicate Elements:
+45
+72
+18
+
+**Count Repeated Numbers in Queue.
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(45);
+        queue.add(72);
+        queue.add(18);
+        queue.add(45);
+        queue.add(91);
+        queue.add(72);
+        queue.add(34);
+        queue.add(18);
+        queue.add(45);
+
+        System.out.println("Queue: " + queue);
+
+        for (int i = 0; i < queue.size(); i++) {
+
+            int value = ((LinkedList<Integer>) queue).get(i);
+            int count = 0;
+
+            for (int j = 0; j < queue.size(); j++) {
+
+                if (((LinkedList<Integer>) queue).get(j) == value) {
+                    count++;
+                }
+            }
+
+            boolean alreadyPrinted = false;
+
+            for (int k = 0; k < i; k++) {
+
+                if (((LinkedList<Integer>) queue).get(k) == value) {
+                    alreadyPrinted = true;
+                    break;
+                }
+            }
+
+            if (!alreadyPrinted && count > 1) {
+                System.out.println(value + " repeated " + count + " times");
+            }
+        }
+    }
+}
+Output:
+Queue: [45, 72, 18, 45, 91, 72, 34, 18, 45]
+
+45 repeated 3 times
+72 repeated 2 times
+18 repeated 2 times
